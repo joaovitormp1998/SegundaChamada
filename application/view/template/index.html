@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/style.css')}}">
+    <title>Profit-e</title>
+</head>
+
+<body>
+    <header>
+        <h1>Header</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Our team</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+
+        <!-- Um formulário de pesquisa é uma outra maneira não linear comum de navegar por um site. -->
+
+        <form>
+            <input type="search" name="q" placeholder="Search query">
+            <input type="submit" value="Go!">
+        </form>
+    </nav>
+    </header>
+
+    <!--  SEÇÃO PRINCIPAL COM TEXTO E FORMULÁRIO  -->
+    <main>
+
+    </main>
+
+    <!-- SEÇÃO DE PRODUTOS -->
+    <section class="produtos-section">
+        <p class="produtos-titulo">Produtos</p>
+        <div class="produto">
+            {%for produto in produtos%}
+            <div class="produto-card">
+                <img src="{{'http:{link}'.format(link = produto.get_imagem())}}">
+                <div>
+                    <p class="produto-nome">{{produto.get_nome()}}</p>
+                    <p class="produto-descricao">{{produto.get_descricao()}}</p>
+                    <p class="produto-preco-anterior">De: {{'R${:,.2f}'.format(produto.get_preco_anterior())}}</p>
+                    <p class="produto-preco">Por: {{'R${:,.2f}'.format(produto.get_preco())}}</p>
+                    <p class="produto-meio-pagamento">ou {{produto.get_qtd_parcelas()}}x de
+                        {{'R${:,.2f}'.format(produto.get_valor_parcela())}}</p>
+                    <button>Comprar</button>
+                </div>
+            </div>
+            {%endfor%}
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="row">        <section id="SaoPaulo">
+            <h1>Localização</h1>
+            <tr></tr>
+            <h3>São Paulo</h3><br>
+            Rua do Rócio, 423/1801<br>
+            Vila Olímpia - SP<br>
+            04552-000<br>
+            +55 11 3333 3333</p>
+        </section>
+        <section id="RiodeJaneiro"><br>
+                <h3>Rio de Janeiro</h3><br>
+                Vol. da Pátria, 301/702<br>
+                Botafogo - RJ<br>
+                22270-000<br>
+                +55 21 3333 3333
+            </p>
+        </section>
+
+        <section id='logop'>
+           <p>São Paulo
+            Rua do Rócio, 423/1801
+            Vila Olímpia - SP
+            04552-000
+            +55 11 3333 3333<br> 2019</p>
+        </section></div>
+
+    </footer>
+</body>
+
+</html>
